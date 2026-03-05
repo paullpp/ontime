@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS notification_logs;
+DROP TABLE IF EXISTS trips;
+DROP TABLE IF EXISTS refresh_tokens;
+DROP TABLE IF EXISTS devices;
+DROP TABLE IF EXISTS users;
