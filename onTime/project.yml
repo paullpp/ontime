@@ -1,0 +1,56 @@
+name: onTime
+options:
+  bundleIdPrefix: com.paullpp
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+  xcodeVersion: "15"
+
+targets:
+  onTime:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: onTime
+    settings:
+      configFiles:
+        Debug: Local.xcconfig
+        Release: Local.xcconfig
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.paullpp.ontime
+        DEVELOPMENT_TEAM: $(DEVELOPMENT_TEAM)
+        SWIFT_VERSION: 5.9
+        CODE_SIGN_ENTITLEMENTS: onTime/Supporting/onTime.entitlements
+        INFOPLIST_FILE: onTime/Supporting/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_PREVIEWS: YES
+      configs:
+        Debug:
+          OTHER_SWIFT_FLAGS: $(inherited) -D DEBUG
+        Release:
+          SWIFT_OPTIMIZATION_LEVEL: -O
+    info:
+      path: onTime/Supporting/Info.plist
+      properties:
+        CFBundleDisplayName: onTime
+        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "1"
+        NSLocationWhenInUseUsageDescription: "onTime uses your location to prefill the trip origin."
+        UIBackgroundModes:
+          - remote-notification
+        CFBundleURLTypes:
+          - CFBundleURLSchemes:
+              - ontime
+            CFBundleURLName: com.paullpp.ontime
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+        UILaunchScreen: {}
+    entitlements:
+      path: onTime/Supporting/onTime.entitlements
+      properties:
+        aps-environment: development
+        com.apple.developer.applesignin:
+          - Default
+        com.apple.developer.usernotifications.time-sensitive: true
